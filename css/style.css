@@ -36,10 +36,12 @@ body {
     font-size: 1.75rem;
     font-weight: 700;
     color: white !important; /* Defaultně bílá */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Jemný stín */
 }
 
 .navbar.scrolled .navbar-brand {
     color: var(--bs-primary) !important; /* Tmavá, když je scrolled */
+    text-shadow: none; /* Odstraníme stín, když je scrolled */
 }
 
 .navbar.scrolled {
@@ -54,6 +56,11 @@ body {
 
 .nav-link {
     transition: all 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Jemný stín */
+}
+
+.navbar.scrolled .nav-link {
+    text-shadow: none; /* Odstraníme stín, když je scrolled */
 }
 
 .navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
