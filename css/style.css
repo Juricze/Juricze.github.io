@@ -1,0 +1,249 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- Globální kontejner pro parallax pozadí --- */
+.main-wrapper {
+    background: url('../images/penzion_daniz_3.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    padding-top: 70px; /* Odsazení pro fixní menu */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* --- Barevné schéma --- */
+:root {
+    --bs-primary: #2c3e50; /* Tmavě modrá z fasády */
+    --bs-primary-rgb: 44, 62, 80;
+    --bs-secondary: #f39c12; /* Oranžovo-zlatý akcent */
+    --light-background: #f8f9fa;
+    --section-bg-light: rgba(255, 255, 255, 0.85); /* Světlejší průhledné pozadí pro sekce */
+    --section-bg-dark: rgba(0, 0, 0, 0.7); /* Tmavší průhledné pozadí pro sekce */
+}
+
+/* --- Navigace --- */
+.navbar {
+    transition: background-color 0.3s ease-in-out;
+}
+
+.navbar-brand {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: white !important; /* Defaultně bílá */
+}
+
+.navbar.scrolled .navbar-brand {
+    color: var(--bs-primary) !important; /* Tmavá, když je scrolled */
+}
+
+.navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar.scrolled .navbar-brand,
+.navbar.scrolled .nav-link {
+    color: var(--bs-primary) !important;
+}
+
+.nav-link {
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+    font-weight: 700; /* Ztučnění aktivní položky */
+    border-bottom: 3px solid; /* Zvětšená tloušťka */
+}
+
+.navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .show>.nav-link {
+    color: #fff; /* Barva aktivní položky na průhledném pozadí */
+    border-bottom-color: #fff; /* Bílé podtržení na průhledném pozadí */
+}
+
+.navbar.scrolled .navbar-nav .nav-link.active, .navbar.scrolled .navbar-nav .show>.nav-link {
+    color: var(--bs-primary) !important; /* Barva aktivní položky na bílém pozadí */
+    border-bottom-color: #111 !important; /* Velmi tmavé podtržení na bílém pozadí */
+}
+
+/* --- Úvodní sekce (Hero) --- */
+#home {
+    height: calc(100vh - 70px); /* Celá výška obrazovky mínus výška menu */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: relative;
+}
+
+#home::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
+    z-index: 1;
+}
+
+#home .container {
+    position: relative;
+    z-index: 2;
+}
+
+#home h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.scroll-down-arrow {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: #fff;
+    font-size: 2.5rem;
+    text-decoration: none;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-20px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+/* --- Obecné styly pro sekce --- */
+section {
+    padding: 80px 0; /* Více vertikálního prostoru */
+    position: relative;
+    z-index: 10; /* Aby byly sekce nad parallax pozadím */
+}
+
+.section-bg-light {
+    background-color: var(--section-bg-light);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    border-radius: 15px;
+    margin: 40px auto; /* Centrování a mezery */
+    max-width: 1300px;
+    width: 90%;
+    padding: 4rem;
+}
+
+.section-bg-dark {
+    background-color: var(--section-bg-dark);
+    color: white;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    border-radius: 15px;
+    margin: 40px auto;
+    max-width: 1300px;
+    width: 90%;
+    padding: 4rem;
+}
+
+/* --- Tlačítka --- */
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    padding: 12px 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #34495e; /* Lehce světlejší modrá */
+    border-color: #34495e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* --- Obrázky v sekcích --- */
+section img {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* --- Patička --- */
+footer {
+    background-color: var(--bs-primary);
+    color: white;
+    padding: 40px 0;
+}
+
+.footer-logo {
+    width: 80px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 3px 4px rgba(0,0,0,0.3));
+}
+
+.footer-logo:hover {
+    transform: scale(1.1);
+}
+
+/* --- Pravidla pro mobilní zařízení --- */
+@media screen and (max-width: 991px) {
+    .main-wrapper {
+        padding-top: 56px; /* Menší odsazení pro mobilní menu */
+    }
+
+    section {
+        padding: 50px 0;
+    }
+
+    .section-bg-light, .section-bg-dark {
+        padding: 2rem;
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    #home {
+        height: calc(100vh - 56px);
+    }
+
+    #home h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Mobilní menu */
+    .navbar-collapse {
+        background-color: var(--light-background); /* Světlé pozadí pro rozbalené menu */
+        padding: 15px;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .navbar-nav .nav-link {
+        color: var(--bs-primary) !important; /* Tmavý text na světlém pozadí */
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+        border-bottom: none; /* Odstraníme podtržení */
+        font-weight: 700; /* Zůstane jen ztučnění */
+    }
+
+    .navbar-toggler {
+        border-color: rgba(0,0,0,.1);
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+}
